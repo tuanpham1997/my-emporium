@@ -39,10 +39,43 @@ app.get('/products/new', (req, res) => {
     res.render('New')
 })
 
+// Delete
+app.delete('/products/:id', (req, res) => {
+    Product.findByIdAndDelete(req.params.id, err =>{
+        if(!err){
+            res.status(200).redirect('/products')
+        } else {
+            res.status(400).json(err)
+        }
+    })
+})
+
+// Update
+app.put('/products/:id', (req,res) => {
+    Product.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedProduct) => {
+        if(!err){
+            res.status(200).redirect('/products')
+        } else {
+            res.status(400).json(err)
+        }
+    })
+})
+
 // Create
 app.post('/products', (req, res) => {
     Product.create(req.body, (err, createdProduct) => {
         res.redirect('/products')
+    })
+})
+
+// Edit
+app.get('/products/:id/edit', (req,res) => {
+    Product.findById(req.params.id, (err,foundProduct) =>{
+        if(!err){
+            res.render('Edit', {product: foundProduct})
+        } else {
+            res.status(400).json(err)
+        }
     })
 })
 
@@ -55,3 +88,4 @@ app.get('/products/:id', (req, res) => {
 
 // ======= Port ========
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`))
+
