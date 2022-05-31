@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-const PORT = 3500
+const PORT = process.env.PORT || 3500
 const Product = require('./models/Product')
 
 // ======= MongoDB Connection ============
@@ -21,6 +21,7 @@ app.engine('jsx', require('express-react-views').createEngine())
 
 // ======= Middleware ==========
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
