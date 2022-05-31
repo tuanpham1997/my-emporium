@@ -7,27 +7,41 @@ class Edit extends React.Component {
         const { product } = this.props
         return (
             <DefaultLayout title="Edit">
+                <div className="centered">
+                    <div className="formC">
+                        <form className='show' action={`/products/${product.id}?_method=PUT`} method='POST'>
+                            <div className="formGr">
+                                <label htmlFor="name">Name:</label>
+                                <input type="text" id='name' name='name'
+                                    defaultValue={product.name} />
+                            </div>
+                            <div className="formGr">
+                                <label htmlFor="image">Image URL:</label>
+                                <input type="text" id='image' name='image'
+                                    defaultValue={product.image} />
+                            </div>
+                            <div className="formGr">
+                                <label htmlFor="description">Description:</label>
+                                <textarea name="description" id="description" cols="30" rows="10"
+                                    defaultValue={product.description}></textarea>
+                            </div>
+                            <div className="formGr">
+                                <label htmlFor="price">Price:</label>
+                                <input type="text" id='price' name='price'
+                                    defaultValue={product.price} />
+                            </div>
+                            <div className="formGr">
 
-                <form action={`/products/${product.id}?_method=PUT`} method='POST'>
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id='name' name='name'
-                        defaultValue={product.name} />
-                    <label htmlFor="image">Image URL:</label>
-                    <input type="text" id='image' name='image'
-                        defaultValue={product.image} />
-                    <label htmlFor="description">Description:</label>
-                    <input type="text" id='description' name='description'
-                        defaultValue={product.description} />
-                    <label htmlFor="price">Price:</label>
-                    <input type="text" id='price' name='price'
-                        defaultValue={product.price} />
-                    <label htmlFor="quantity">Quantity</label>
-                    <input type="text" id='quantity' name='quantity'
-                        defaultValue={product.quantity} />
-                    <input type="submit" value='Edit Product' />
-                </form>
-                <button><a href="/products">Back</a></button>
-
+                                <label htmlFor="quantity">Quantity</label>
+                                <input type="text" id='quantity' name='quantity'
+                                    defaultValue={product.quantity} />
+                            </div>
+                            <div className="formGr reverse">
+                                <input type="submit" value='Edit Product' />
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </DefaultLayout>
         )
     }
