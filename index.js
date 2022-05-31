@@ -82,7 +82,7 @@ app.put('/products/:cartid/cart', async (req,res) =>{
     Cart.findByIdAndUpdate('6295a013cd690abd0097a1a9',{
         items : shopCart.items
     }, {new:true}, (err,updatedCart) =>{
-        res.redirect('/products/6295a013cd690abd0097a1a9/cart')
+        res.redirect(`/products/${req.body.id}`)
     })
 })
 app.put('/products/:cartId/:cartItem/delete', async (req,res) =>{

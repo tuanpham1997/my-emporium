@@ -79,6 +79,7 @@ body {
 }
 
 .card-container {
+    margin-left: 5%;
     display: flex;
     flex-flow: row wrap;
 }
@@ -89,6 +90,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     width: 24vw;
+    max-width: 350px;
     height: 40vh;
     background-color: teal;
     border: solid antiquewhite 10px;

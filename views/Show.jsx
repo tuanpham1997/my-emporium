@@ -20,10 +20,10 @@ class Show extends React.Component {
                     </div>
                     <div className='holder'>
                         <button><a href="/products">Back</a></button>                            <button><a href={`/products/${product._id}/edit`}>Edit</a></button>
-                        <form action={`/products/6295a013cd690abd0097a1a9/cart?_method=PUT`} method='POST'>
-                            <input className='small' type="text" id='id' name='id' defaultValue={product.id}/>
+                        {product.quantity > 0 ? <form action={`/products/6295a013cd690abd0097a1a9/cart?_method=PUT`} method='POST'>
+                            <input className='small' type="text" id='id' name='id' defaultValue={product.id} />
                             <button type='submit'>Buy</button>
-                        </form>
+                        </form> : null}
                     </div>
 
 
